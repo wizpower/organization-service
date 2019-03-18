@@ -1,22 +1,3 @@
-spring:
-  sleuth:
-    sampler:
-      probability: 1
-  zipkin:
-    baseUrl:  http://localhost:9411
-    enabled: true
-  cloud:
-    stream:
-      bindings:
-        output:
-          destination:  orgChangeTopic
-          content-type: application/json
-        kafka:
-          binder:
-            zkNodes: localhost
-            brokers: localhost
-
-
 
 #Setting the logging levels for the service
 logging:
@@ -24,25 +5,6 @@ logging:
     com.netflix: WARN
     org.springframework.web: WARN
     com.thoughtmechanix: DEBUG
-
-
-eureka:
-  instance:
-    preferIpAddress: true
-    instance-id: ${spring.cloud.client.ip-address}:${server.port}
-    status-page-url: http://${spring.cloud.client.ip-address}:${server.port}/swagger-ui.html
-    # 续约更新时间间隔（默认30秒）
-    eureka.instance.lease-renewal-interval-in-seconds: 10
-    # 续约到期时间（默认90秒）
-    eureka.instance.lease-expiration-duration-in-seconds: 30
-  client:
-    healthcheck:
-      enabled: true
-    registerWithEureka: true
-    fetchRegistry: true
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
-
 
 #security:
   #oauth2:
@@ -52,5 +14,3 @@ eureka:
 swagger:
   enable: true
 
-server:
-  port: 8601
